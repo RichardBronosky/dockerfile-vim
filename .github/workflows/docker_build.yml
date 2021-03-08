@@ -68,6 +68,10 @@ jobs:
           build prepare "${CACHE_IMAGE_PREPARE}"
           build release
 
+      - uses: mxschmitt/action-tmate@v3
+        if: 'failure()'
+        with:
+          limit-access-to-actor: true
       - name: 'Push'
         run: |
           # Push cache images
